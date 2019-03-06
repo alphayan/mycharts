@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "xfce.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "xfce.name" . }}
+    helm.sh/chart: {{ include "xfce.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
+      protocol: TCP
+      name: 6901tcp169011
+      nodePort: 16901
+  selector:
+    app.kubernetes.io/name: {{ include "xfce.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
