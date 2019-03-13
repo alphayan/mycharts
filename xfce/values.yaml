@@ -45,6 +45,15 @@ resources:
 nodeSelector:
     kubernetes.io/hostname: master
 
+volumeMounts:
+    mountPath: /data
+
+
+volumes:
+  - hostPath:
+      path: /k8sdata/nginx
+      type: ""
+
 tolerations: []
 
 affinity: {}

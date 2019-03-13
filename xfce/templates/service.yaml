@@ -14,7 +14,6 @@ spec:
       targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: 6901tcp169011
-      nodePort: 16901
   selector:
     app.kubernetes.io/name: {{ include "xfce.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
