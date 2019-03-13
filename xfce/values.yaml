@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: consol/ubuntu-xfce-vnc
+  repository: nginx
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -13,8 +13,8 @@ nameOverride: ""
 fullnameOverride: ""
 
 service:
-  type: NodePort
-  port: 6901
+  type: ClusterIP
+  port: 80
 
 ingress:
   enabled: false
@@ -36,13 +36,14 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
    limits:
-     cpu: 100m
-     memory: 128Mi
+     cpu: 1000m
+     memory: 1280Mi
    requests:
-     cpu: 100m
-     memory: 128Mi
+     cpu: 1000m
+     memory: 1280Mi
 
-nodeSelector: {}
+nodeSelector:
+    kubernetes.io/hostname: master
 
 tolerations: []
 
